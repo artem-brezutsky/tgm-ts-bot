@@ -13,24 +13,34 @@ exports.BotService = void 0;
 const common_1 = require("@nestjs/common");
 const telegraf_1 = require("telegraf");
 const config_1 = require("@nestjs/config");
+const bot_update_1 = require("./bot.update");
 let BotService = class BotService {
     configService;
     bot;
     constructor(configService) {
         this.configService = configService;
-        const token = this.configService.get('TELEGRAM_BOT_TOKEN');
-        if (!token) {
-            throw new Error('Bad token!');
+        try {
+            const token = this.configService.get('TELEGRAM_BOT_TOKEN');
+            if (!token) {
+                throw new Error('❌ Ошибка: TELEGRAM_BOT_TOKEN не найден в .env файле!');
+            }
+            this.bot = new telegraf_1.Telegraf(token);
+            new bot_update_1.BotUpdate(this.bot);
         }
-        console.log(token);
-        this.bot = new telegraf_1.Telegraf(token);
+        catch (error) {
+            console.error('❌ Ошибка в BotService:', error.message);
+            process.exit(1);
+        }
     }
     async onModuleInit() {
-        this.bot.start(ctx => {
-            ctx.reply('Привет! Отправь мне ссылку и я скажу откуда она!');
-        });
-        this.bot.launch();
-        console.log('🤖 Бот запущен!');
+        try {
+            this.bot.launch();
+            console.log('🤖 Бот запущен!');
+        }
+        catch (error) {
+            console.error('❌ Ошибка при запуске бота:', error.message);
+            process.exit(1);
+        }
     }
 };
 exports.BotService = BotService;

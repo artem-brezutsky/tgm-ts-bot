@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Запустить бота",
+        "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+        "program": "${workspaceFolder}/src/main.ts",
+        "cwd": "${workspaceFolder}",
+        "envFile": "${workspaceFolder}/.env",
+        "autoAttachChildProcesses": true,
+        "sourceMaps": true,
+        "resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"],
+        "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+        "console": "integratedTerminal"
+      }
+    ]
+  }

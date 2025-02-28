@@ -5,19 +5,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
-const common_1 = require("@nestjs/common");
-const bot_module_1 = require("./bot/bot.module");
-const config_1 = require("@nestjs/config");
-const bot_controller_1 = require("./bot/bot.controller");
-let AppModule = class AppModule {
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-exports.AppModule = AppModule;
-exports.AppModule = AppModule = __decorate([
-    (0, common_1.Module)({
-        imports: [config_1.ConfigModule.forRoot(), bot_module_1.BotModule],
-        controllers: [bot_controller_1.BotController]
-    })
-], AppModule);
-//# sourceMappingURL=app.module.js.map
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BotController = void 0;
+const common_1 = require("@nestjs/common");
+let BotController = class BotController {
+    getInfo() {
+    }
+};
+exports.BotController = BotController;
+__decorate([
+    (0, common_1.Get)('/token'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], BotController.prototype, "getInfo", null);
+exports.BotController = BotController = __decorate([
+    (0, common_1.Controller)('/api')
+], BotController);
+//# sourceMappingURL=bot.controller.js.map
