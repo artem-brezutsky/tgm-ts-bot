@@ -65,7 +65,10 @@ export async function handleMessage(ctx: Context) {
                         {
                             type: "video",
                             media: { source: videoData.buffer, filename: videoData.filename },
-                            caption: `🎥 Видео от ${senderName}`
+                            caption: `🎥 Видео от ${senderName}`,
+                            width: 12,
+                            height: 16,
+                            
                         }
                     );
                 } else {

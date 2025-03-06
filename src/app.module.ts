@@ -5,6 +5,6 @@ import { BotController } from './bot/bot.controller';
 
 @Module({
   imports: [ConfigModule.forRoot(), BotModule],
-  controllers: [BotController]
+  controllers: [BotController],
 })
 export class AppModule {}

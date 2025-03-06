@@ -4,6 +4,6 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [ConfigModule],
-  providers: [BotService]
+  providers: [BotService],
 })
 export class BotModule {}
