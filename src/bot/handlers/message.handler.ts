@@ -25,7 +25,7 @@ export async function handleMessage(ctx: Context) {
 
         // 🔹 Регулярные выражения для TikTok и Instagram
         const tiktokRegex = /https?:\/\/(?:www\.|vm\.)?tiktok\.com\/(@[\w.-]+\/video\/\d+|[\w@?=./-]+)/i;
-        const instagramRegex = /https?:\/\/(?:www\.)?instagram\.com\/[\w@?=./-]+/i;
+        const instagramRegex = /https?:\/\/(?:www\.)?instagram\.com\/(stories|reel)\/[\w@?=./-]+/i;
 
         // Обработка ссылок с TikTok
         if (tiktokRegex.test(messageText)) {
@@ -66,8 +66,8 @@ export async function handleMessage(ctx: Context) {
                             type: "video",
                             media: { source: videoData.buffer, filename: videoData.filename },
                             caption: `🎥 Видео от ${senderName}`,
-                            width: 12,
-                            height: 16,
+                            width: 720,
+                            height: 1152,
                             
                         }
                     );
